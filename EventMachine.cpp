@@ -6,18 +6,22 @@
 
 using namespace std;
 
-class Event {
+class Event
+{
 public:
     virtual int run() = 0;
 };
 
-class IntEvent : public Event {
+class IntEvent : public Event
+{
 public:
-    IntEvent(int n) {
+    IntEvent(int n)
+    {
         this->n = n;
     }
 
-    int run() override {
+    int run() override
+    {
         return n;
     }
 
@@ -25,13 +29,16 @@ private:
     int n;
 };
 
-class StringEvent : public Event {
+class StringEvent : public Event
+{
 public:
-    StringEvent(string n) {
+    StringEvent(string n)
+    {
         this->n = n;
     }
 
-    int run() override {
+    int run() override
+    {
         return (int) n.length();
     }
 
@@ -39,13 +46,16 @@ private:
     string n;
 };
 
-class DoubleEvent : public Event {
+class DoubleEvent : public Event
+{
 public:
-    DoubleEvent(double n) {
+    DoubleEvent(double n)
+    {
         this->n = n;
     }
 
-    int run() override {
+    int run() override
+    {
         return (int) round(n);
     }
 
@@ -53,13 +63,16 @@ private:
     double n;
 };
 
-class QuitEvent : public Event {
+class QuitEvent : public Event
+{
 public:
-    QuitEvent() {
+    QuitEvent()
+    {
         n = 0;
     }
 
-    int run() override {
+    int run() override
+    {
         exit(n);
     }
 
@@ -67,7 +80,8 @@ private:
     int n;
 };
 
-int main() {
+int main()
+{
     IntEvent intEvent(1);
     StringEvent stringEvent("fish");
     DoubleEvent doubleEvent(2.3);
@@ -81,7 +95,8 @@ int main() {
 
     string command;
 
-    while (true) {
+    while (true)
+    {
         cout << "Command: " << endl;
         cin >> command;
 
@@ -89,9 +104,12 @@ int main() {
 
         it = event_list.find(command);
 
-        if (it != event_list.end()) {
+        if (it != event_list.end())
+        {
             cout << it->second->run() << endl;
-        } else {
+        }
+        else
+        {
             cout << "Command not found." << endl;
         }
     }
